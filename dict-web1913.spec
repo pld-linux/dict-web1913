@@ -4,7 +4,7 @@ Summary:	Webster's Revised Unabridged Dictionary for dictd
 Summary(pl):	S³ownik Webster's Revised Unabridged Dictionary dla dictd
 Name:		dict-%{dictname}
 Version:	1.4
-Release:	5
+Release:	6
 License:	Free for personal or research use, distributable
 Group:		Applications/Dictionaries
 Source0:	ftp://ftp.dict.org/pub/dict/%{name}-%{version}.tar.gz
