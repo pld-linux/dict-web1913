@@ -29,9 +29,9 @@ Dictionary (1913).
 %setup -q
 
 %build
-autoconf
+%{__autoconf}
 cd libmaa
-autoconf
+%{__autoconf}
 cd ..
 %configure \
 	--with-local-libmaa \
