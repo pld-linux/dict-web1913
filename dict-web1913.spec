@@ -4,7 +4,7 @@ Summary:	Webster's Revised Unabridged Dictionary for dictd
 Summary(pl):	S³ownik Webster's Revised Unabridged Dictionary dla dictd
 Name:		dict-%{dictname}
 Version:	1.4
-Release:	6
+Release:	7
 License:	Free for personal or research use, distributable
 Group:		Applications/Dictionaries
 Source0:	ftp://ftp.dict.org/pub/dict/%{name}-%{version}.tar.gz
@@ -15,6 +15,7 @@ Patch0:		%{name}-ac.patch
 Patch1:		%{name}-sparc.patch
 URL:		http://www.dict.org/
 BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	dictzip
 BuildRequires:	flex
@@ -36,8 +37,10 @@ Dictionary (1913).
 
 %build
 %{__autoconf}
+cp -f /usr/share/automake/config.* .
 cd libmaa
 %{__autoconf}
+cp -f /usr/share/automake/config.* .
 cd ..
 %configure \
 	--with-local-libmaa \
@@ -49,7 +52,6 @@ tar xfz %{SOURCE1}
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_datadir}/dictd,%{_sysconfdir}/dictd}
-#make install dictdir="$RPM_BUILD_ROOT%{_datadir}/dictd"
 
 dictprefix=%{_datadir}/dictd/%{dictname}
 echo "# Webster's Revised Unabridged Dictionary
