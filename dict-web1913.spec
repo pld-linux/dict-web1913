@@ -7,8 +7,6 @@ Version:	1.4
 Release:	2
 License:	Free to use, but see http://www.cogsci.princeton.edu/~wn/
 Group:		Applications/Dictionaries
-Group(de):	Applikationen/Wörterbücher
-Group(pl):	Aplikacje/S³owniki
 URL:		http://www.dict.org/
 Source0:	ftp://ftp.dict.org/pub/dict/%{name}-%{version}.tar.gz
 Source1:	ftp://ftp.dict.org/pub/dict/%{dictname}-%{dictversion}.tar.gz
