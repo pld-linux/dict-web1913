@@ -1,5 +1,5 @@
-%define         dictname web1913
-%define         dictversion 0.46-a
+%define		dictname web1913
+%define		dictversion 0.46-a
 Summary:	Webster's Revised Unabridged Dictionary
 Summary(pl):	S³ownik Webster's Revised Unabridged Dictionary
 Name:		dict-%{dictname}
