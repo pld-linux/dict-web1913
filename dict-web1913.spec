@@ -30,8 +30,12 @@ Dictionary (1913).
 
 %build
 autoconf
-(cd libmaa; autoconf)
-%configure --with-local-libmaa --with-datapath=%{dictname}-%{dictversion}
+cd libmaa
+autoconf
+cd ..
+%configure \
+	--with-local-libmaa \
+	--with-datapath=%{dictname}-%{dictversion}
 %{__make}
 tar xfz %{SOURCE1}
 %{__make} db
@@ -45,8 +49,8 @@ install %{dictname}.{dict.dz,index} $RPM_BUILD_ROOT%{_datadir}/dictd
 dictprefix=%{_datadir}/dictd/%{dictname}
 echo "# Webster's Revised Unabridged Dictionary
 database %{dictname} {
-    data  \"$dictprefix.dict.dz\"
-    index \"$dictprefix.index\"
+	data  \"$dictprefix.dict.dz\"
+	index \"$dictprefix.index\"
 }" > $RPM_BUILD_ROOT%{_sysconfdir}/dictd/%{dictname}.dictconf
 
 %clean
