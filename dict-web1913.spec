@@ -8,7 +8,9 @@ Release:	5
 License:	Free for personal or research use, distributable
 Group:		Applications/Dictionaries
 Source0:	ftp://ftp.dict.org/pub/dict/%{name}-%{version}.tar.gz
+# Source0-md5:	3b1eda03a3eb12d5d0f857bd990d7ab5
 Source1:	ftp://ftp.dict.org/pub/dict/%{dictname}-%{dictversion}.tar.gz
+# Source1-md5:	e957fe5b670cabb48b1c3b43998084ae
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-sparc.patch
 URL:		http://www.dict.org/
