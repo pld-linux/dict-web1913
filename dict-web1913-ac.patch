@@ -1,0 +1,11 @@
+--- dict-web1913-1.4/libmaa/configure.in~	Sun Feb 22 20:32:16 1998
++++ dict-web1913-1.4/libmaa/configure.in	Wed Sep 18 00:26:24 2002
+@@ -192,7 +193,7 @@
+ fi
+ 
+ if test "$needs_xmalloc" = 1; then
+-    LIBOBJS="$LIBOBJS xmalloc.o"
++    AC_LIBOBJ([xmalloc])
+ fi
+ 
+ echo .
