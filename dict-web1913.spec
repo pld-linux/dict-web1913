@@ -5,15 +5,17 @@ Name:		dict-%{dictname}
 Version:	1.4
 Release:	1
 License:	Free to use, but see http://www.cogsci.princeton.edu/~wn/
-Group:		Applications/Dictionary
+Group:		Applications/Dictionaries
+Group(de):	Applikationen/Wörterbücher
+Group(pl):	Aplikacje/S³owniki
 URL:		http://www.dict.org/
 Source0:	ftp://ftp.dict.org/pub/dict/%{name}-%{version}.tar.gz
 Source1:	ftp://ftp.dict.org/pub/dict/%{dictname}-%{dictversion}.tar.gz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-BuildRequires:  dictzip
-Requires:       dictd 
+BuildRequires:	dictzip
+Requires:	dictd 
 Requires:	%{_sysconfdir}/dictd
-BuildArch:      noarch
+BuildArch:	noarch
 
 %description 
 
