@@ -7,16 +7,16 @@ Version:	1.4
 Release:	2
 License:	Free to use, but see http://www.cogsci.princeton.edu/~wn/
 Group:		Applications/Dictionaries
-URL:		http://www.dict.org/
 Source0:	ftp://ftp.dict.org/pub/dict/%{name}-%{version}.tar.gz
 Source1:	ftp://ftp.dict.org/pub/dict/%{dictname}-%{dictversion}.tar.gz
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-BuildRequires:	dictzip
+URL:		http://www.dict.org/
 BuildRequires:	autoconf
-BuildRequires:	flex
 BuildRequires:	bison
+BuildRequires:	dictzip
+BuildRequires:	flex
 Requires:	dictd
 Requires:	%{_sysconfdir}/dictd
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Webster's Revised Unabridged Dictionary (1913).
@@ -62,11 +62,11 @@ if [ -f /var/lock/subsys/dictd ]; then
 fi
 
 %postun
-if [ "$1" = "0" -a -f /var/lock/subsys/dictd ]; then
+if [ -f /var/lock/subsys/dictd ]; then
 	/etc/rc.d/init.d/dictd restart 1>&2 || true
 fi
 
 %files
 %defattr(644,root,root,755)
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/dictd/%{dictname}.dictconf
-%{_datadir}/dictd/%{dictname}*
+%{_datadir}/dictd/%{dictname}.*
