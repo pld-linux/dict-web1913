@@ -15,17 +15,17 @@ BuildRequires:	dictzip
 BuildRequires:	autoconf
 BuildRequires:	flex
 BuildRequires:	bison
-Requires:	dictd 
+Requires:	dictd
 Requires:	%{_sysconfdir}/dictd
 
-%description 
+%description
 Webster's Revised Unabridged Dictionary (1913).
 
 %description -l pl
 S³ownik Webstera (angielsko-angielski): Webster's Revised Unabridged
 Dictionary (1913).
 
-%prep 
+%prep
 %setup -q
 
 %build
@@ -34,7 +34,7 @@ autoconf
 %configure --with-local-libmaa --with-datapath=%{dictname}-%{dictversion}
 %{__make}
 tar xfz %{SOURCE1}
-%{__make} db 
+%{__make} db
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -46,7 +46,7 @@ dictprefix=%{_datadir}/dictd/%{dictname}
 echo "# Webster's Revised Unabridged Dictionary
 database %{dictname} {
     data  \"$dictprefix.dict.dz\"
-    index \"$dictprefix.index\" 
+    index \"$dictprefix.index\"
 }" > $RPM_BUILD_ROOT%{_sysconfdir}/dictd/%{dictname}.dictconf
 
 %clean
