@@ -1,9 +1,10 @@
 %define         dictname web1913
 %define         dictversion 0.46-a
 Summary:	Webster's Revised Unabridged Dictionary
+Summary(pl):	S³ownik Webster's Revised Unabridged Dictionary
 Name:		dict-%{dictname}
 Version:	1.4
-Release:	1
+Release:	2
 License:	Free to use, but see http://www.cogsci.princeton.edu/~wn/
 Group:		Applications/Dictionaries
 Group(de):	Applikationen/Wörterbücher
@@ -14,10 +15,17 @@ Source1:	ftp://ftp.dict.org/pub/dict/%{dictname}-%{dictversion}.tar.gz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	dictzip
 BuildRequires:	autoconf
+BuildRequires:	flex
+BuildRequires:	bison
 Requires:	dictd 
 Requires:	%{_sysconfdir}/dictd
 
 %description 
+Webster's Revised Unabridged Dictionary (1913).
+
+%description -l pl
+S³ownik Webstera (angielsko-angielski): Webster's Revised Unabridged
+Dictionary (1913).
 
 %prep 
 %setup -q
@@ -32,9 +40,9 @@ tar xfz %{SOURCE1}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_datadir}/dictd/,%{_sysconfdir}/dictd}
+install -d $RPM_BUILD_ROOT{%{_datadir}/dictd,%{_sysconfdir}/dictd}
 #make install dictdir="$RPM_BUILD_ROOT%{_datadir}/dictd/"
-install %{dictname}.{dict.dz,index} $RPM_BUILD_ROOT%{_datadir}/dictd/
+install %{dictname}.{dict.dz,index} $RPM_BUILD_ROOT%{_datadir}/dictd
 
 dictprefix=%{_datadir}/dictd/%{dictname}
 echo "# Webster's Revised Unabridged Dictionary
@@ -46,14 +54,14 @@ database %{dictname} {
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%postun
-if [ -f /var/lock/subsys/dictd ]; then
-	/etc/rc.d/init.d/dictd restart 1>&2 || true
-fi
-
 %post
 if [ -f /var/lock/subsys/dictd ]; then
 	/etc/rc.d/init.d/dictd restart 1>&2
+fi
+
+%postun
+if [ "$1" = "0" -a -f /var/lock/subsys/dictd ]; then
+	/etc/rc.d/init.d/dictd restart 1>&2 || true
 fi
 
 %files
