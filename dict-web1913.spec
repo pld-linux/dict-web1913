@@ -13,9 +13,9 @@ Source0:	ftp://ftp.dict.org/pub/dict/%{name}-%{version}.tar.gz
 Source1:	ftp://ftp.dict.org/pub/dict/%{dictname}-%{dictversion}.tar.gz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	dictzip
+BuildRequires:	autoconf
 Requires:	dictd 
 Requires:	%{_sysconfdir}/dictd
-BuildArch:	noarch
 
 %description 
 
@@ -23,6 +23,8 @@ BuildArch:	noarch
 %setup -q
 
 %build
+autoconf
+(cd libmaa; autoconf)
 %configure --with-local-libmaa --with-datapath=%{dictname}-%{dictversion}
 %{__make}
 tar xfz %{SOURCE1}
