@@ -1,11 +1,11 @@
 %define		dictname web1913
 %define		dictversion 0.46-a
-Summary:	Webster's Revised Unabridged Dictionary
-Summary(pl):	S³ownik Webster's Revised Unabridged Dictionary
+Summary:	Webster's Revised Unabridged Dictionary for dictd
+Summary(pl):	S³ownik Webster's Revised Unabridged Dictionary dla dictd
 Name:		dict-%{dictname}
 Version:	1.4
-Release:	4
-License:	Free to use, but see http://www.cogsci.princeton.edu/~wn/
+Release:	5
+License:	Free for personal or research use, distributable
 Group:		Applications/Dictionaries
 Source0:	ftp://ftp.dict.org/pub/dict/%{name}-%{version}.tar.gz
 Source1:	ftp://ftp.dict.org/pub/dict/%{dictname}-%{dictversion}.tar.gz
@@ -47,8 +47,7 @@ tar xfz %{SOURCE1}
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_datadir}/dictd,%{_sysconfdir}/dictd}
-#make install dictdir="$RPM_BUILD_ROOT%{_datadir}/dictd/"
-install %{dictname}.{dict.dz,index} $RPM_BUILD_ROOT%{_datadir}/dictd
+#make install dictdir="$RPM_BUILD_ROOT%{_datadir}/dictd"
 
 dictprefix=%{_datadir}/dictd/%{dictname}
 echo "# Webster's Revised Unabridged Dictionary
@@ -56,6 +55,7 @@ database %{dictname} {
 	data  \"$dictprefix.dict.dz\"
 	index \"$dictprefix.index\"
 }" > $RPM_BUILD_ROOT%{_sysconfdir}/dictd/%{dictname}.dictconf
+mv %{dictname}.{dict.dz,index} $RPM_BUILD_ROOT%{_datadir}/dictd
 
 %clean
 rm -rf $RPM_BUILD_ROOT
