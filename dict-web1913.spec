@@ -4,11 +4,12 @@ Summary:	Webster's Revised Unabridged Dictionary
 Summary(pl):	S³ownik Webster's Revised Unabridged Dictionary
 Name:		dict-%{dictname}
 Version:	1.4
-Release:	2
+Release:	3
 License:	Free to use, but see http://www.cogsci.princeton.edu/~wn/
 Group:		Applications/Dictionaries
 Source0:	ftp://ftp.dict.org/pub/dict/%{name}-%{version}.tar.gz
 Source1:	ftp://ftp.dict.org/pub/dict/%{dictname}-%{dictversion}.tar.gz
+Patch0:		%{name}-ac.patch
 URL:		http://www.dict.org/
 BuildRequires:	autoconf
 BuildRequires:	bison
@@ -27,6 +28,7 @@ Dictionary (1913).
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__autoconf}
