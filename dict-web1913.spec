@@ -1,7 +1,7 @@
 %define		dictname web1913
 %define		dictversion 0.46-a
 Summary:	Webster's Revised Unabridged Dictionary for dictd
-Summary(pl.UTF-8):   Słownik Webster's Revised Unabridged Dictionary dla dictd
+Summary(pl.UTF-8):	Słownik Webster's Revised Unabridged Dictionary dla dictd
 Name:		dict-%{dictname}
 Version:	1.4
 Release:	8
