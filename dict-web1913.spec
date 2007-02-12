@@ -1,7 +1,7 @@
 %define		dictname web1913
 %define		dictversion 0.46-a
 Summary:	Webster's Revised Unabridged Dictionary for dictd
-Summary(pl):	S³ownik Webster's Revised Unabridged Dictionary dla dictd
+Summary(pl.UTF-8):   SÅ‚ownik Webster's Revised Unabridged Dictionary dla dictd
 Name:		dict-%{dictname}
 Version:	1.4
 Release:	8
@@ -26,8 +26,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Webster's Revised Unabridged Dictionary (1913).
 
-%description -l pl
-S³ownik Webstera (angielsko-angielski): Webster's Revised Unabridged
+%description -l pl.UTF-8
+SÅ‚ownik Webstera (angielsko-angielski): Webster's Revised Unabridged
 Dictionary (1913).
 
 %prep
