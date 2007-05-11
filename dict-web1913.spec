@@ -13,6 +13,7 @@ Source1:	ftp://ftp.dict.org/pub/dict/%{dictname}-%{dictversion}.tar.gz
 # Source1-md5:	e957fe5b670cabb48b1c3b43998084ae
 Patch0:		%{name}-ac.patch
 Patch1:		%{name}-sparc.patch
+Patch2:		%{name}-gcc.patch
 URL:		http://www.dict.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -35,6 +36,7 @@ Dictionary (1913).
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__autoconf}
